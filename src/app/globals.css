@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #09090b;
+  --background: #060913;
   --foreground: #e4e4e7;
 }
 
@@ -24,5 +24,84 @@ body {
 
 ::selection {
   background: #10b981;
-  color: #09090b;
+  color: #060913;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #060913;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 999px;
+  border: 2px solid #060913;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Oversized ghost numerals behind section headings. */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgb(255 255 255 / 0.09);
+}
+
+/* Slow-drifting aurora blobs behind the hero. */
+@keyframes aurora-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(36px, -28px) scale(1.08);
+  }
+  66% {
+    transform: translate(-24px, 20px) scale(0.94);
+  }
+}
+
+.aurora-blob {
+  animation: aurora-drift 14s ease-in-out infinite;
+}
+.aurora-blob-slow {
+  animation: aurora-drift 20s ease-in-out infinite reverse;
+}
+
+/* Subtle blueprint grid used behind the hero. */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Infinite tech marquee. */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  animation: marquee-scroll 36s linear infinite;
+}
+.marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Respect users who prefer less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob,
+  .aurora-blob-slow,
+  .marquee {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }

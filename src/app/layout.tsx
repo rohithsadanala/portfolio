@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     description:
       "AI Software Engineer · Python Full-Stack — LLM evaluation, agentic RAG, and tool-calling agents.",
     type: "website",
+    images: [{ url: "/photos/portrait-professional.jpg", width: 512, height: 512 }],
   },
 };
 
@@ -31,7 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full bg-zinc-950 text-zinc-200">{children}</body>
+      <body className="min-h-full bg-[#060913] text-zinc-200">{children}</body>
     </html>
   );
 }
